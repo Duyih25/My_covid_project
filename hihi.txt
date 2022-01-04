@@ -1,1 +1,0 @@
-data -> cleaning ->data -> correlation -> exploring data -> visualization
