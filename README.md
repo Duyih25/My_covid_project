@@ -1,51 +1,51 @@
 # My covid project
  
 
-## C�c b??c ti?n h�nh :
+## Các bướcc tiến hành :
 
-### B??c 1: L?y d? li?u
+### Bướcc 1: Lấy dữ liệu
 
-Em ?� l?y 1 b?ng c�c s? li?u (raw_data.csv) m� em t?i t? trang web Our world in data xu?ng ( https://ourworldindata.org/covid-deaths ). D? li?u g?m c�c s? li?u v? s? ca nhi?m, d�n s?, s? ca t? vong,� trong ??i d?ch covid t�nh t? ng�y 01/01/2020 ??n ng�y 27/12/2020
+Em đã lấy 1 bảng các số liệu (raw_data.csv) tại trang web Our world in data ( https://ourworldindata.org/covid-deaths ). Dữ liệu gồm các số liệu về số ca nhiễm, dân số, số ca tử vong,… trong đại dịch covid tính từ ngày 01/01/2020 đến ngày 27/12/2020
 
-### B??c 2: L�m s?ch d? li?u (Data cleaning)
+### Bước 2: Làm sạch dữ liệu (Data cleaning)
 
-??u ti�n, em chia b?ng n�y th�nh chia th�nh 2 b?ng (�covid cases.csv� v� �vaccination and facilities.csv� v� b? ?i nh?ng c?t kh�ng s? d?ng t?i)
+Đầu tiên, em chia bảng này thành chia thành 2 bảng (“covid cases.csv” và “vaccination and facilities.csv” và bỏ đi những cột không sử dụng tới)
 
-* �covid cases.csv� g?m c�c th�ng tin v? ca nhi?m, ca t? vong, ca b?nh n?ng c?a c�c khu v?c tr�n th? gi?i
-* �vaccination and facilities.csv� g?m c�c th�ng tin v? s? l??ng vaccine, s? ng ???c ti�m v� nh?ng th? ???c chu?n b? ?? ch?ng d?ch
+* “covid cases.csv” gồm các thông tin về ca nhiễm, ca tử vong, ca bệnh nặng của các khu vực trên thế giới
+* “vaccination and facilities.csv” gồm các thông tin về số lượng vaccine, số người đã tiêm và những thứ được chuẩn bị cho chống dịch
 
-??u ti�n l�m s?ch b?ng �covid cases.csv�:
-* Th�m t�n l?c ??a c�c ??a ?i?m ch?a ghi t�n l?c ??a
-* L�m s?ch c?t �population�: em th?y c� 1 v�ng (Northern Cyprus) k ghi d�n s? n�n em ?� t�m th�ng tin tr�n m?ng v� ra ???c d�n s? c?a v�ng ?� v�o n?m 2011 v� 2017 => T�nh t? l? t?ng d�n s? => Ta s? ra ???c s? d�n x?p x? c?a v�ng ?�
-* Sau khi nh�n d? li?u th� ta th?y nh?ng gi� tr? null ? c?t �total cases� v� �total deaths� ?a ph?n l� l�c m� ch?a c� ca nhi?m ? n??c ?� n�n em ?� ph? nh?ng gi� tr? null ? 2 c?t ?� l� 0
-* C�c v�ng m� t?t c? d�ng ??u c� �total cases� v� �total deaths� l� 0 th� b? ra kh?i b?ng 
-* L?p nh?ng gi� tr? null ? icu patients v� hosp patients th�nh 0
-* V� n?u c?ng c�c c?t �new cases� kh�ng kh?p v?i �total cases� v� �new deaths� kh�ng kh?p v?i �total deaths� do 2 c?t �new cases� v� �new deaths� c� nh?ng � null l� do � ?� kh�ng ???c ng??i l�m b?ng ?i?n v�o ch? kh�ng ph?i do th?i ?i?m ??y ch?a xu?t hi?n ca nhi?m v� ca t? vong n�n em ?� l�m l?i 2 c?t �new cases� v� �new deaths� d?a tr�n 2 c?t �total cases� v� �total deaths�
+Đầu tiên làm sạch bảng “covid cases.csv”:
+* Thêm tên lục địa các địa điểm chưa ghi tên lục địa
+* Làm sạch cột “population”: em thấy có 1 vùng (Northern Cyprus) không ghi dân số nên em đã t́ìm thông tin trên mạng và ra đượcc dân số của vùng đó vào năm 2011 và 2017 => Tính tỉ lệ tăng dân số => Ta tính ra được số dân xấp xỉ của vùng đó
+* Sau khi nh́ìn dữ liệu th́ì em thấy những giá trị null ở cột “total cases” và “total deaths” đa phần là lúc mà chưa có ca nhiễm nào nên em đã phủ những giá trị 0 vào
+* Các vùng mà tất cả dòng đều có “total cases” và “total deaths” là 0 th́ì bỏ ra khỏi bảng 
+* Lấp những giá trị null cột icu patients và hosp patients thành 0
+* V́ì nếu cộng các cột “new cases” không khớp với “total cases” và “new deaths” không khớp với “total deaths” do 2 cột “new cases” và “new deaths” có những ô null là do ô đó không được người làm bảng điền vào chứ không phải do thời điểm đấy chưa xuất hiện ca nhiễm và ca tử vong nên em đã làm lại 2 cột “new cases” và “new deaths” dựa trên 2 cột “total cases” và “total deaths”
 
-L�m s?ch b?ng �vaccination and facilities.csv�:
-* B? ?i nh?ng d�ng kh�ng h?u d?ng cho vi?c ph�n t�ch
-* L?p c�c gi� tr? null ? c?t continents
-* Truy v?n ra ng�y ??u ti�n c� ng??i ti�m n�n nh?ng gi� tr? null ? c�c c?t �total test�, �total vaccinations�, �people vaccinated�, �people fully vaccinated� v� �total booster� c� th? thay b?ng 0 v?i c�c nh?ng ng�y tr??c ng�y ?�
-* C?t �total vaccinations� v� �total tests� c� kh� nhi?u gi� tr? null v� c?t �new tests� v� �new vaccinations� c?ng v?y n�n r?t kh� ?? s?a cho c?t �new tests� v� �new vaccinations� n�n s? b? 2 c?t n�y ?i ?? tr�nh cho vi?c ph�n t�ch sau n�y b? sai l?ch nhi?u
+Làm sạch bảng “vaccination and facilities.csv”:
+* Bỏ đi những dòng không hữu dụng cho viẹc phân tích
+* Lấp các giá trị null ở cột continents
+* Truy vấn ra ngày đầu tiên có người tiêm nên những giá trị null ở các cột “total test”, “total vaccinations”, “people vaccinated”, “people fully vaccinated” và “total booster” có thể thay bằng 0 với các những ngày trước ngày đó
+* Cột “total vaccinations” và “total tests” có khá nhiều giá trị null và cột “new tests” và “new vaccinations” cũng vậy nên rất khó để sửa cho cột “new tests” và “new vaccinations” nên em bỏ 2 cột này đi để tránh cho việc phân tích sau này bị sai lệch nhiều
 
-### B??c 3: T�m t??ng quan d? li?u (Data correlation)
+### Bước 3: T́ìm tương quan dữ liệu (Data correlation)
 
-Trong file �export data.sql� v� t?o ra 2 c?t �case increasing rate� v� �death increasing rate�
-* �case increasing rate� ???c t�nh b?ng t? l? ca m?i so v?i t?ng s? ca
-* �death increasing death� ???c t�nh b?ng t? l? ca t? vong chia t?ng s? ca
+Trong file “export data.sql” và tạo ra 2 cột “case increasing rate” và “death increasing rate”
+* “case increasing rate” được tính bằng tỉ lệ ca mới so với tổng số ca của ngày trước đó
+* “death increasing death” được tính bằng số ca tử vong chia tổng số ca của ngày trước đó
 
-Sau ?�, xu?t d? li?u v�o file �table for finding correlation.csv� . Ti?p ?� ti?n h�nh t�m t??ng quan gi?a 2 c?t n�y v?i nh?ng c?t ?� c� t?i file (FindingCorr.ipynb)
+Sau đó, xuất dữ liệu vào file “table for finding correlation.csv” . Tiếp đó tiến hành t́ìm tương quan của 2 cột này với những cột đã có từ đầu (FindingCorr.ipynb)
 
 
-### B??c 4: Kh�m ph� d? li?u (Data exploring)
+### Bước 4: Khám phá dữ liệu (Data exploring)
 
-Trong file �Exploring data.sql� th� em ?� truy v?n 1 v�i th�ng tin v? ca nhi?m, t? l? m?c, ca t? vong, s? ng??i ???c ti�m vaccine
+Trong file “Exploring data.sql” th́ em đã truy vấn 1 vài thông tin về ca nhiễm, tỉ lệ mắc, ca tử vong, số người được tiêm vaccine tại Việt Nam và các địa điểm trên thế giới
 
-### B??c 5: Tr?c quan h�a d? li?u (Data visualization)
+### Bước 5: Trực quan hóa dữ liệu (Data visualization)
 
-Em c� 2 Dashboard s? d?ng Tableau:
-* �Dashboard about Covid status in the world.twb� th� em k?t n?i Tableau v?i PostgreSQL r?i tr?c quan m?t s? c�u l?nh SQL em ?� th?c hi?n t?i file �Exploring data.sql�
-* �Dashboard about increasing rate of cases and deaths.twb� th� ??u ti�n em l?y file �table for finding correlation.csv� xu?t ra 1 file excel �table for dashboard 2.xlsx� r?i k?t n?i Tableau v?i Excel ?? tr?c quan h�a
+Em có 2 Dashboard sử dụng Tableau:
+* “Dashboard about Covid status in the world.twb” th́ì em kết nối Tableau với PostgreSQL rồi trực quan một số câu lệnh SQL em đã thực hiện tại file “Exploring data.sql”
+* “Dashboard about increasing rate of cases and deaths.twb” th́ì đầu tiên em lấy file “table for finding correlation.csv” xuất ra 1 file excel “table for dashboard 2.xlsx” rồi kết nối Tableau với Excel để trực quan hóa
 
 
 
