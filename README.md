@@ -46,6 +46,7 @@ Trong file “Exploring data.sql” th́ em đã truy vấn 1 vài thông tin v�
 Em có 2 Dashboard sử dụng Tableau:
 * “Dashboard about Covid status in the world.twb” th́ì em kết nối Tableau với PostgreSQL rồi trực quan một số câu lệnh SQL em đã thực hiện tại file “Exploring data.sql”
 * “Dashboard about increasing rate of cases and deaths.twb” th́ì đầu tiên em lấy file “table for finding correlation.csv” xuất ra 1 file excel “table for dashboard 2.xlsx” rồi kết nối Tableau với Excel để trực quan hóa
+ (Em có xuất ra 2 file pdf để tiện cho việc quan sát kết quả)
 
 
 
