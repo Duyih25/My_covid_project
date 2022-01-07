@@ -8,6 +8,7 @@
 Em đã lấy 1 bảng các số liệu (raw_data.csv) tại trang web Our world in data ( https://ourworldindata.org/covid-deaths ). Dữ liệu gồm các số liệu về số ca nhiễm, dân số, số ca tử vong,… trong đại dịch covid tính từ ngày 01/01/2020 đến ngày 27/12/2020
 
 ### Bước 2: Làm sạch dữ liệu (Data cleaning)
+(Sử dụng PostgreSQL)
 
 Đầu tiên, em chia bảng này thành chia thành 2 bảng (“covid cases.csv” và “vaccination and facilities.csv” và bỏ đi những cột không sử dụng tới)
 
